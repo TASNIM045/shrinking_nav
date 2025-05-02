@@ -19,7 +19,7 @@ header {
 
 .navbar {
     position: sticky;
-    top: 0;
+    top: 12px;
     width: 90%;
     margin: 0 auto;
     background: none;
@@ -28,12 +28,13 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 20px;
-    transition: all 0.7s ease;
+    transition: all 0.7s ease,border 0.2ms ease;
     z-index: 1000;
     border-radius: 50px;
+    animation-delay: 2s;
 }
 
-.navbar .logo{
+.navbar .logo {
     width: 33.33%;
 }
 
@@ -54,18 +55,163 @@ header {
 .navbar .nav-links {
     list-style: none;
     display: flex;
-    gap: 50px;
+    gap: 20px;
     width: 33.33%;
 }
 
 .nav-links li a {
     color: #fff;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
+    padding: 35px 15px;
+    position: relative;
 }
 
-.nav-end{
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: all 0.6s ease;
+    transform: translateX(-50%);
+}
+
+
+.menu-section {
+    height: 80vh;
+    width: 100vw;
+    background-color: rgb(116, 106, 106);
+    position: absolute;
+    top: 90px;
+    left: -95px;
+    transition: all 0.9s ease;
+    display: none;
+}
+
+.menu-section-scroll {
+    transition: all 0.3s ease;
+    left: -285px;
+}
+
+.nav-links li:nth-child(1):hover .menu-section {
+    transition: all 0.9s ease;
+    display: block;
+}
+
+.nav-links li a:hover::after {
+    width: 70%;
+    box-shadow: 0 0 10px rgb(195, 195, 195);
+}
+
+.menu-section-inner {
+    width: 90%;
+    height: 85%;
+    margin: 2% auto;
+    background-color: #fff;
+}
+
+.menu-section-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-section-single-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 25px;
+    background-color: rgb(38, 39, 39);
+}
+
+.menu-section-single-item .dot {
+    height: 15px;
+    width: 15px;
+    background-color: rgb(253, 253, 253);
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgb(118, 118, 119);
+}
+
+.menu-section-single-item h1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+
+.main-menu-section {
+    display: flex;
+    background-color: black;
+    height: 85%;
+}
+
+.main-menu-left {
+    width: 23%;
+    background-color: blueviolet;
+    padding: 50px 25px;
+}
+
+.main-menu-mid {
+    width: 50%;
+    background-color: tomato;
+    padding: 60px 25px;
+    display: flex;
+    gap: 250px;
+}
+
+.main-menu-right {
+    width: 27%;
+    background-color: teal;
+    padding: 60px 25px;
+}
+
+.main-menu-left ul,
+.main-menu-mid ul,
+.main-menu-right ul {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 10px;
+
+}
+
+.main-menu-left ul li,
+.main-menu-mid ul li,
+.main-menu-right ul li {
+    font-size: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 5px 0px;
+}
+
+
+.main-menu-mid ul,
+.main-menu-right ul {
+    margin-top: -1px;
+}
+
+
+.main-menu-digital-marketing {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-end {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -73,23 +219,33 @@ header {
     justify-content: end;
 }
 
-.nav-end .svg{
+.nav-end .svg {
     border: 1px solid #232222;
     padding: 10px;
     border-radius: 50%;
 }
 
-.nav-end .svg:hover{
+.nav-end .svg:hover {
     background-color: rgb(137, 137, 137);
     transition: all 0.5s ease;
     cursor: pointer;
 }
 
-.nav-end .svg svg{
+.nav-end .svg svg {
     display: flex;
     height: 20px;
     width: 20px;
 }
+
+.nav-end .svg {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.nav-end.svg.hidden {
+    opacity: 0;
+}
+
 
 .nav-end .btn {
     background: #292929;
@@ -101,13 +257,13 @@ header {
     z-index: 99;
 }
 
-.nav-end .btn.btn:hover{
+.nav-end .btn.btn:hover {
     background-color: rgb(137, 137, 137);
     color: black;
     transition: all 0.3s ease;
 }
 
-.navbar .nav-end a{
+.navbar .nav-end a {
     text-decoration: none;
     font-size: 17px;
     font-weight: 600;
